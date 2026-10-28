@@ -1,6 +1,6 @@
 # Density bar (synthetic)
 
-This example is shaped like a real pack. Do not copy the fake identifiers into a live report.
+This example is shaped like a real pack. The machine-checkable copy is [fixtures/pass/golden](../fixtures/pass/golden). Do not copy the fake identifiers into a live report.
 
 Seed: `grant:nih-r01-xx000001`. Direction: forward.
 

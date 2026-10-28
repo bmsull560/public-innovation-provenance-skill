@@ -1,0 +1,282 @@
+{
+  "schema": "public-innovation-provenance.v1",
+  "seed": {
+    "type": "grant",
+    "id": "grant:nih-r01-xx000001"
+  },
+  "direction": [
+    "forward"
+  ],
+  "nodes": [
+    {
+      "id": "grant:nih-r01-xx000001",
+      "type": "grant"
+    },
+    {
+      "id": "recipient:state-u",
+      "type": "recipient"
+    },
+    {
+      "id": "organization:state-u",
+      "type": "organization"
+    },
+    {
+      "id": "person:ada-inventor",
+      "type": "person"
+    },
+    {
+      "id": "person:ben-inventor",
+      "type": "person"
+    },
+    {
+      "id": "publication:pmid-90000001",
+      "type": "publication"
+    },
+    {
+      "id": "publication:pmid-90000002",
+      "type": "publication"
+    },
+    {
+      "id": "patent:us-9000001",
+      "type": "patent"
+    },
+    {
+      "id": "assignment:reel-0001",
+      "type": "assignment"
+    },
+    {
+      "id": "assignment:reel-0002",
+      "type": "assignment"
+    },
+    {
+      "id": "organization:spinco",
+      "type": "organization"
+    },
+    {
+      "id": "product:spinprep",
+      "type": "product"
+    }
+  ],
+  "edges": [
+    {
+      "from": "grant:nih-r01-xx000001",
+      "type": "funds",
+      "to": "recipient:state-u",
+      "confidence": "established",
+      "source": "https://api.usaspending.gov/",
+      "identifier": "FAIN-R01XX000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "publication:pmid-90000001",
+      "type": "acknowledges",
+      "to": "grant:nih-r01-xx000001",
+      "confidence": "established",
+      "source": "https://reporter.nih.gov/",
+      "identifier": "PMID-90000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "publication:pmid-90000002",
+      "type": "acknowledges",
+      "to": "grant:nih-r01-xx000001",
+      "confidence": "established",
+      "source": "https://reporter.nih.gov/",
+      "identifier": "PMID-90000002",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "person:ada-inventor",
+      "type": "authors",
+      "to": "publication:pmid-90000001",
+      "confidence": "established",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/",
+      "identifier": "PMID-90000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "person:ada-inventor",
+      "type": "invents",
+      "to": "patent:us-9000001",
+      "confidence": "established",
+      "source": "https://patents.google.com/",
+      "identifier": "US9000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "person:ben-inventor",
+      "type": "invents",
+      "to": "patent:us-9000001",
+      "confidence": "established",
+      "source": "https://patents.google.com/",
+      "identifier": "US9000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "patent:us-9000001",
+      "type": "government_interest",
+      "to": "grant:nih-r01-xx000001",
+      "confidence": "established",
+      "source": "https://patents.google.com/patent/US9000001",
+      "identifier": "US9000001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "assignment:reel-0001",
+      "type": "assigned_by",
+      "to": "person:ada-inventor",
+      "confidence": "established",
+      "source": "https://assignment.uspto.gov/",
+      "identifier": "reel-0001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "assignment:reel-0001",
+      "type": "assigned_to",
+      "to": "organization:state-u",
+      "confidence": "established",
+      "source": "https://assignment.uspto.gov/",
+      "identifier": "reel-0001",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "assignment:reel-0002",
+      "type": "assigned_by",
+      "to": "organization:state-u",
+      "confidence": "established",
+      "source": "https://assignment.uspto.gov/",
+      "identifier": "reel-0002",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "assignment:reel-0002",
+      "type": "assigned_to",
+      "to": "organization:spinco",
+      "confidence": "established",
+      "source": "https://assignment.uspto.gov/",
+      "identifier": "reel-0002",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "organization:state-u",
+      "type": "licenses",
+      "to": "organization:spinco",
+      "confidence": "unresolved",
+      "source": "EDGAR exhibit search",
+      "identifier": "search:edgar",
+      "as_of": "2026-10-27"
+    },
+    {
+      "from": "product:spinprep",
+      "type": "embodies",
+      "to": "patent:us-9000001",
+      "confidence": "inferred",
+      "source": "https://spinco.example/spinprep",
+      "identifier": "product-page-spinprep",
+      "as_of": "2026-10-27"
+    }
+  ],
+  "public_return": [
+    {
+      "dimension": "Public funding",
+      "finding": "Award FAIN-R01XX000001 obligated USD 1200000. Outlay was not separately published.",
+      "confidence": "established",
+      "source": "https://api.usaspending.gov/"
+    },
+    {
+      "dimension": "Research output",
+      "finding": "RePORTER lists PMID 90000001 and PMID 90000002 on this core project.",
+      "confidence": "established",
+      "source": "https://reporter.nih.gov/"
+    },
+    {
+      "dimension": "IP",
+      "finding": "US9000001 names NIH and R01XX000001 in the government-interest clause.",
+      "confidence": "established",
+      "source": "https://patents.google.com/patent/US9000001"
+    },
+    {
+      "dimension": "Ownership",
+      "finding": "Assignment reel-0002 is the latest title-bearing conveyance to organization:spinco, as of 2026-10-27.",
+      "confidence": "established",
+      "source": "https://assignment.uspto.gov/"
+    },
+    {
+      "dimension": "Government license",
+      "finding": "The face of US9000001 states a government interest naming NIH and R01XX000001.",
+      "confidence": "established",
+      "source": "https://patents.google.com/patent/US9000001"
+    },
+    {
+      "dimension": "Licensing",
+      "finding": "Exclusive versus non-exclusive license text was not in a public record.",
+      "confidence": "unresolved",
+      "source": "EDGAR exhibit search"
+    },
+    {
+      "dimension": "Commercialization",
+      "finding": "organization:spinco sells product:spinprep. The product page does not name a patent number.",
+      "confidence": "corroborated",
+      "source": "https://spinco.example/spinprep"
+    },
+    {
+      "dimension": "Capitalization",
+      "finding": "No public capital-event record was retrieved for organization:spinco.",
+      "confidence": "unresolved",
+      "source": "EDGAR"
+    },
+    {
+      "dimension": "Acquisition",
+      "finding": "No merger assignment or acquisition record was retrieved.",
+      "confidence": "unresolved",
+      "source": "USPTO assignment"
+    },
+    {
+      "dimension": "Government use",
+      "finding": "FY2024 contracts to the firm exist. None of the retrieved descriptions name US9000001.",
+      "confidence": "inferred",
+      "source": "https://api.usaspending.gov/"
+    },
+    {
+      "dimension": "Public access",
+      "finding": "Both PMIDs resolve on PubMed.",
+      "confidence": "established",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/"
+    },
+    {
+      "dimension": "Revenue",
+      "finding": "No product-line revenue figure was in a filing.",
+      "confidence": "unresolved",
+      "source": "EDGAR"
+    },
+    {
+      "dimension": "Royalty",
+      "finding": "No public royalty ledger was found. This is not a finding of zero.",
+      "confidence": "unresolved",
+      "source": "foundation report search"
+    },
+    {
+      "dimension": "Follow-on public funding",
+      "finding": "No later public award was tied to this core project in the search.",
+      "confidence": "unresolved",
+      "source": "https://reporter.nih.gov/"
+    }
+  ],
+  "gaps": [
+    {
+      "hop": "organization:state-u|licenses|organization:spinco",
+      "searched": "USPTO assignment and EDGAR exhibit search",
+      "would_close": "a filed exhibit naming US9000001 and the exclusivity"
+    },
+    {
+      "hop": "royalty",
+      "searched": "foundation and institutional reports",
+      "would_close": "a public royalty ledger for this family"
+    },
+    {
+      "hop": "government-use",
+      "searched": "USAspending contracts to organization:spinco",
+      "would_close": "a contract description naming US9000001"
+    }
+  ]
+}

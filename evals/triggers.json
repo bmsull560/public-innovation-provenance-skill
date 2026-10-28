@@ -1,0 +1,57 @@
+{
+  "skill": "public-innovation-provenance",
+  "test_cases": [
+    {
+      "input": "Trace this NIH grant to the spinout and the license.",
+      "should_trigger": true
+    },
+    {
+      "input": "Who owns the patent that came out of this Bayh-Dole award, and was it licensed?",
+      "should_trigger": true
+    },
+    {
+      "input": "Run the chain backwards from US patent 9000001 to the funding award.",
+      "should_trigger": true
+    },
+    {
+      "input": "Does this 510(k) product sit on a federally funded patent family?",
+      "should_trigger": true
+    },
+    {
+      "input": "Join this USAspending FAIN to the university tech-transfer graph.",
+      "should_trigger": true
+    },
+    {
+      "input": "What does the government-interest clause on this patent name?",
+      "should_trigger": true
+    },
+    {
+      "input": "Start public-innovation-provenance. Seed: FAIN R01XX000001.",
+      "should_trigger": true
+    },
+    {
+      "input": "What is the taxpayer ROI on this grant?",
+      "should_trigger": false
+    },
+    {
+      "input": "Was privatizing this patent a bad deal?",
+      "should_trigger": false
+    },
+    {
+      "input": "What is a fair price target for this ticker next quarter?",
+      "should_trigger": false
+    },
+    {
+      "input": "Draft the complaint alleging they stole the publicly funded IP.",
+      "should_trigger": false
+    },
+    {
+      "input": "Build me a covered-call strategy for my portfolio.",
+      "should_trigger": false
+    },
+    {
+      "input": "Summarize today's hearing. There is no award, patent, or product to trace.",
+      "should_trigger": false
+    }
+  ]
+}

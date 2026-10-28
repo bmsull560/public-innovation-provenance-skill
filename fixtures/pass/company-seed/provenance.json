@@ -1,0 +1,105 @@
+{
+  "schema": "public-innovation-provenance.v1",
+  "seed": {
+    "type": "company",
+    "id": "organization:spinco"
+  },
+  "direction": [
+    "reverse"
+  ],
+  "generated_at": "2026-10-27",
+  "nodes": [
+    {
+      "id": "organization:spinco",
+      "type": "organization"
+    }
+  ],
+  "edges": [],
+  "public_return": [
+    {
+      "dimension": "Public funding",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Research output",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "IP",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Ownership",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Government license",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Licensing",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Commercialization",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Capitalization",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Acquisition",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Government use",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Public access",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Revenue",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Royalty",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    },
+    {
+      "dimension": "Follow-on public funding",
+      "finding": "Not searched in this identity-only fixture.",
+      "confidence": "unresolved",
+      "source": "n/a"
+    }
+  ],
+  "gaps": []
+}

@@ -1,0 +1,49 @@
+{
+  "skill": "public-innovation-provenance",
+  "test_cases": [
+    {
+      "name": "forward_grant_does_not_invent_a_license",
+      "input": "Trace NIH FAIN R01XX000001 forward through papers, patents, ownership, and any license to a product.",
+      "assertions": [
+        "Resolves one seed before searching and does not merge a second graph on a similar name",
+        "Puts source, identifier, as_of, and confidence on every hop",
+        "Leaves license text unresolved with identifier search:<system> when no public exhibit names the family",
+        "Does not treat a missing royalty ledger as zero and does not compute a taxpayer ROI"
+      ]
+    },
+    {
+      "name": "reverse_patent_quotes_or_unresolved",
+      "input": "Start from this US patent and say whether public funding contributed.",
+      "assertions": [
+        "Quotes the government-interest clause when it is on the face or a sibling, otherwise marks that hop unresolved",
+        "Does not treat a citation to a funded paper as proof this patent was funded",
+        "Stops a branch after two consecutive inferred hops and writes the gap"
+      ]
+    },
+    {
+      "name": "sbir_is_not_university_bayh_dole",
+      "input": "This firm had an SBIR Phase II and now sells a device. Map the public-return ledger.",
+      "assertions": [
+        "Does not copy university Bayh-Dole title defaults onto the small-business contract",
+        "Keeps the embodies edge unresolved until a patent, label, or contract description ties the award to the device",
+        "Fills all 14 ledger rows and separates obligation from outlay"
+      ]
+    },
+    {
+      "name": "product_page_is_inferred",
+      "input": "The company product page says patented chemistry and does not give a patent number. What can we claim?",
+      "assertions": [
+        "Keeps embodies at inferred, or omits it, and states the missing patent number",
+        "Does not promote the product page to an established patent-to-product hop"
+      ]
+    },
+    {
+      "name": "refuse_the_verdict",
+      "input": "Tell me if the public got a bad deal on this spinout.",
+      "assertions": [
+        "Refuses a good-deal or bad-deal verdict and refuses a ratio labeled ROI",
+        "Offers the public-return ledger as accounting with confidence on each cell"
+      ]
+    }
+  ]
+}

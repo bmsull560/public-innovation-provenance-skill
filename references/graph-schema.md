@@ -50,6 +50,9 @@ Node and edge ids are stable slugs. Do not reuse an id for a different legal per
 | acquires | organization → organization | |
 | invests | organization → organization | via capital_event |
 
+
+Unresolved edges, and only unresolved edges, may use `identifier: search:<system>` (lowercase, for example `search:edgar`) when no public record id exists. Each unresolved edge needs a `gaps[]` row whose `hop` is exactly `from|type|to`. A `search:` id on an established or inferred edge fails the checker. Institution and company seeds use node type `organization`.
+
 Every edge must include:
 
 ```
@@ -86,4 +89,4 @@ Do not join on agency display name, city, or ticker.
 }
 ```
 
-`direction` is `forward`, `reverse`, or both. Validate with `scripts/check-provenance.py`.
+`direction` is `forward`, `reverse`, or both. `generated_at` and every edge `as_of` are `YYYY-MM-DD`. Validate with `scripts/check-provenance.py`.

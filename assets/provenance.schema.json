@@ -3,42 +3,89 @@
   "$id": "public-innovation-provenance.v1",
   "title": "Public innovation provenance pack",
   "type": "object",
-  "required": ["schema", "seed", "direction", "generated_at", "nodes", "edges", "public_return", "gaps"],
+  "required": [
+    "schema",
+    "seed",
+    "direction",
+    "generated_at",
+    "nodes",
+    "edges",
+    "public_return",
+    "gaps"
+  ],
   "additionalProperties": true,
   "properties": {
-    "schema": { "const": "public-innovation-provenance.v1" },
+    "schema": {
+      "const": "public-innovation-provenance.v1"
+    },
     "seed": {
       "type": "object",
-      "required": ["type", "id"],
+      "required": [
+        "type",
+        "id"
+      ],
       "properties": {
         "type": {
           "enum": [
-            "grant", "publication", "invention", "patent",
-            "institution", "company", "product", "person"
+            "grant",
+            "publication",
+            "invention",
+            "patent",
+            "institution",
+            "company",
+            "product",
+            "person"
           ]
         },
-        "id": { "type": "string", "minLength": 3 }
+        "id": {
+          "type": "string",
+          "minLength": 3
+        }
       }
     },
     "direction": {
       "type": "array",
       "minItems": 1,
-      "items": { "enum": ["forward", "reverse"] }
+      "items": {
+        "enum": [
+          "forward",
+          "reverse"
+        ]
+      }
     },
-    "generated_at": { "type": "string", "minLength": 8 },
+    "generated_at": {
+      "type": "string",
+      "minLength": 8,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
     "nodes": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "type"],
+        "required": [
+          "id",
+          "type"
+        ],
         "properties": {
-          "id": { "type": "string" },
+          "id": {
+            "type": "string"
+          },
           "type": {
             "enum": [
-              "grant", "recipient", "subrecipient", "person",
-              "publication", "invention", "patent", "assignment",
-              "license", "organization", "product", "capital_event",
-              "acquisition", "procurement"
+              "grant",
+              "recipient",
+              "subrecipient",
+              "person",
+              "publication",
+              "invention",
+              "patent",
+              "assignment",
+              "license",
+              "organization",
+              "product",
+              "capital_event",
+              "acquisition",
+              "procurement"
             ]
           }
         }
@@ -48,17 +95,71 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["from", "type", "to", "confidence", "source", "identifier", "as_of"],
+        "required": [
+          "from",
+          "type",
+          "to",
+          "confidence",
+          "source",
+          "identifier",
+          "as_of"
+        ],
         "properties": {
-          "from": { "type": "string" },
-          "to": { "type": "string" },
-          "type": { "type": "string" },
-          "confidence": {
-            "enum": ["established", "corroborated", "inferred", "unresolved", "not-applicable"]
+          "from": {
+            "type": "string"
           },
-          "source": { "type": "string", "minLength": 1 },
-          "identifier": { "type": "string", "minLength": 1 },
-          "as_of": { "type": "string", "minLength": 8 }
+          "to": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "funds",
+              "subawards",
+              "employs_or_appoints",
+              "acknowledges",
+              "authors",
+              "invents",
+              "discloses",
+              "matures_to",
+              "continuation_of",
+              "cites",
+              "owned_by",
+              "assigned_by",
+              "assigned_to",
+              "government_interest",
+              "licenses",
+              "options",
+              "spins_out",
+              "embodies",
+              "sells",
+              "procures",
+              "acquires",
+              "invests"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "established",
+              "corroborated",
+              "inferred",
+              "unresolved",
+              "not-applicable"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "identifier": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Record id at source, or search:<system> when confidence is unresolved and no public record id exists."
+          },
+          "as_of": {
+            "type": "string",
+            "minLength": 8,
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          }
         }
       }
     },
@@ -67,14 +168,45 @@
       "minItems": 14,
       "items": {
         "type": "object",
-        "required": ["dimension", "finding", "confidence"],
+        "required": [
+          "dimension",
+          "finding",
+          "confidence"
+        ],
         "properties": {
-          "dimension": { "type": "string" },
-          "finding": { "type": "string" },
-          "confidence": {
-            "enum": ["established", "corroborated", "inferred", "unresolved", "not-applicable"]
+          "dimension": {
+            "enum": [
+              "Public funding",
+              "Research output",
+              "IP",
+              "Ownership",
+              "Government license",
+              "Licensing",
+              "Commercialization",
+              "Capitalization",
+              "Acquisition",
+              "Government use",
+              "Public access",
+              "Revenue",
+              "Royalty",
+              "Follow-on public funding"
+            ]
           },
-          "source": { "type": "string" }
+          "finding": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "established",
+              "corroborated",
+              "inferred",
+              "unresolved",
+              "not-applicable"
+            ]
+          },
+          "source": {
+            "type": "string"
+          }
         }
       }
     },
@@ -82,11 +214,21 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["hop", "searched", "would_close"],
+        "required": [
+          "hop",
+          "searched",
+          "would_close"
+        ],
         "properties": {
-          "hop": { "type": "string" },
-          "searched": { "type": "string" },
-          "would_close": { "type": "string" }
+          "hop": {
+            "type": "string"
+          },
+          "searched": {
+            "type": "string"
+          },
+          "would_close": {
+            "type": "string"
+          }
         }
       }
     }
