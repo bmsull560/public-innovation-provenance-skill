@@ -1,0 +1,11 @@
+# Public Innovation Provenance
+
+Trace public money into knowledge, property, and markets. Every hop needs a source, an identifier, a date, and a confidence. Commercialization is not a verdict.
+
+This repository is an agent skill (`SKILL.md`).
+
+## Check a pack
+
+```bash
+python3 scripts/check-provenance.py path/to/pack
+```
