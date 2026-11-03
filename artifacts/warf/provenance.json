@@ -1,0 +1,95 @@
+{
+  "schema": "public-innovation-provenance.v1",
+  "seed": {"type": "institution", "id": "org:warf"},
+  "direction": ["forward", "reverse"],
+  "generated_at": "2026-11-02",
+  "research_cutoff": "2026-11-02",
+  "nodes": [
+    {"id": "org:warf", "type": "organization", "label": "Wisconsin Alumni Research Foundation"},
+    {"id": "org:uw-madison", "type": "organization", "label": "University of Wisconsin-Madison"},
+    {"id": "org:shine", "type": "organization", "label": "SHINE Technologies, LLC"},
+    {"id": "org:alithic", "type": "organization", "label": "Alithic (formerly Earth RepAIR)"},
+    {"id": "org:realta", "type": "organization", "label": "Realta Fusion, Inc."},
+    {"id": "patent:us10332646b2", "type": "patent", "number": "US10332646B2", "title": "Apparatus and method for generating medical isotopes", "assignee": "WARF"},
+    {"id": "patent:us11238999b2", "type": "patent", "number": "US11238999B2", "title": "Apparatus and method for generating medical isotopes", "assignee": "WARF"},
+    {"id": "patent-app:p220309us02", "type": "patent", "number": "P220309US02", "title": "Cementitious materials and methods of making and using same", "assignee": "WARF", "note": "university technology reference; issued patent status unresolved"},
+    {"id": "grant:de-ar0002077", "type": "grant", "fain_or_award_id": "DE-AR0002077", "agency": "DOE ARPA-E", "recipient": "SHINE Technologies, LLC"},
+    {"id": "person:gregory-piefer", "type": "person", "name": "Gregory Piefer"},
+    {"id": "person:bu-wang", "type": "person", "name": "Bu Wang"},
+    {"id": "person:robert-anex", "type": "person", "name": "Robert Anex"}
+  ],
+  "edges": [
+    {
+      "from": "org:shine",
+      "type": "licenses",
+      "to": "org:warf",
+      "confidence": "corroborated",
+      "source": "https://www.shinefusion.com/press-releases/shine-expands-patent-portfolio/",
+      "identifier": "SHINE-2017-09-28-patent-portfolio",
+      "as_of": "2017-09-28",
+      "note": "Company statement of exclusive worldwide licenses for accelerator technology and two patents managed by WARF. Exact patent numbers unresolved; does not independently establish ownership or specific coverage."
+    },
+    {
+      "from": "patent:us10332646b2",
+      "type": "owned_by",
+      "to": "org:warf",
+      "confidence": "established",
+      "source": "USPTO / Google Patents",
+      "identifier": "US10332646B2",
+      "as_of": "2019-06-25",
+      "note": "Assignee WARF; inventors include Piefer. Candidate for licensed accelerator patents; not promoted to covered-patent edge without explicit schedule."
+    },
+    {
+      "from": "patent:us11238999b2",
+      "type": "owned_by",
+      "to": "org:warf",
+      "confidence": "established",
+      "source": "USPTO / Google Patents",
+      "identifier": "US11238999B2",
+      "as_of": "2022-02-01",
+      "note": "Assignee WARF; related family. Candidate only."
+    },
+    {
+      "from": "grant:de-ar0002077",
+      "type": "funds",
+      "to": "org:shine",
+      "confidence": "established",
+      "source": "https://www.usaspending.gov/award/ASST_NON_DEAR0002077_089",
+      "identifier": "DE-AR0002077",
+      "as_of": "2025-09-14",
+      "note": "Obligated ~$3.78M; total funding ~$4.46M including non-federal share. Distinct from accelerator license."
+    },
+    {
+      "from": "patent-app:p220309us02",
+      "type": "owned_by",
+      "to": "org:warf",
+      "confidence": "established",
+      "source": "WARF technologies listing / published application PDF",
+      "identifier": "P220309US02",
+      "as_of": "2025-02-19",
+      "note": "Inventors Bu Wang and Robert Anex. Candidate for Alithic licensed technology; university reporting states two of three related patents licensed; specific numbers unresolved. Not counted as issued patent publication."
+    }
+  ],
+  "public_return": [
+    {"dimension": "Public funding", "finding": "SHINE: DE-AR0002077 ARPA-E cooperative agreement (obligated ~$3.78M). Historical NNSA Mo-99 support reported by company/DOE. Alithic: $2.3M DOE grant reported in university sources (award ID unresolved). Realta: DE-AR0001258 and DE-SC0024887.", "confidence": "established", "source": "USAspending; university reporting"},
+    {"dimension": "Research output", "finding": "UW-Madison inventors (Piefer, Wang, Anex) on WARF patents/applications. Publications and lab work precede company formation.", "confidence": "corroborated", "source": "Patent documents; university news"},
+    {"dimension": "IP", "finding": "WARF-assigned patents with Piefer (US10332646B2, US11238999B2) and Wang/Anex technology reference (P220309US02). SHINE owns separate isotope-production patents.", "confidence": "established", "source": "USPTO / Google Patents"},
+    {"dimension": "Ownership", "finding": "WARF assignee on candidate patents. SHINE owns its own patents. No recorded assignment of WARF patents to companies in public records examined.", "confidence": "established", "source": "Patent assignment records"},
+    {"dimension": "Government license", "finding": "Confirmatory license recorded on Realta-related WARF patent US12166398B2. No confirmatory-license recording identified for SHINE candidate WARF patents in this pass.", "confidence": "corroborated", "source": "Prior Milestone 8; USPTO"},
+    {"dimension": "Licensing", "finding": "SHINE company statement of exclusive worldwide licenses for accelerator technology and two WARF-managed patents (2017). Exact schedule unresolved. Alithic: university reporting of two of three patents licensed. Realta: core technology license + equity.", "confidence": "corroborated", "source": "Company release; university reporting"},
+    {"dimension": "Commercialization", "finding": "SHINE: isotope production (Mo-99 pathway, Lu-177 commercial) and neutron services. Alithic: demonstration plant. Realta: fusion system development. Outcomes not attributed to specific patents without evidence.", "confidence": "corroborated", "source": "Company announcements; university news"},
+    {"dimension": "Capitalization", "finding": "WARF Ventures equity in portfolio companies (including SHINE, Alithic, Realta). Private rounds reported; amounts and exact stakes largely unresolved. Equity as license consideration distinguished from cash investment.", "confidence": "corroborated", "source": "WARF portfolio page; company disclosures"},
+    {"dimension": "Acquisition", "finding": "No acquisitions of the priority companies identified in this pass. Historical exits in portfolio (e.g., TomoTherapy) noted separately.", "confidence": "unresolved", "source": "Portfolio lists"},
+    {"dimension": "Government use", "finding": "DOE/NNSA support for SHINE isotope production. No procurement of products identified.", "confidence": "corroborated", "source": "USAspending; company reports"},
+    {"dimension": "Public access", "finding": "No open-access or public-use claims beyond standard patent publication. License terms private.", "confidence": "unresolved", "source": "n/a"},
+    {"dimension": "Revenue", "finding": "Company-level commercial activity (isotope sales) reported; no patent-level or royalty-specific revenue public.", "confidence": "unresolved", "source": "Company announcements"},
+    {"dimension": "Royalty", "finding": "No public royalty figures from WARF licenses to priority companies. WARF aggregate licensing income not attributable to specific deals.", "confidence": "unresolved", "source": "n/a"},
+    {"dimension": "Follow-on public funding", "finding": "SHINE DE-AR0002077 (2025). Conditional DOE loan commitment for Chrysalis (2026; not a disbursement). Realta follow-on awards.", "confidence": "established", "source": "USAspending; agency announcements"}
+  ],
+  "gaps": [
+    {"hop": "SHINE license → specific WARF patents", "searched": "Company 2017 release; USPTO assignee search for Piefer + WARF; WARF technology listings", "would_close": "Executed license exhibit with patent schedule or recorded confirmatory licenses naming the patents"},
+    {"hop": "Alithic → specific licensed patents + DOE award ID", "searched": "University reporting; WARF P220309US02; inventor searches", "would_close": "Patent numbers of the three related inventions and the two licensed; DOE award identifier and government-interest statements"},
+    {"hop": "Realta DE-SC0024887 → executed TIA + IP exhibits + outlays", "searched": "HigherGov (secondary); USAspending; patent documents", "would_close": "Public or FOIA-released executed agreement, IP exhibits, and outlay ledger"},
+    {"hop": "Confirmatory licenses on SHINE candidate patents", "searched": "USPTO assignment and government-interest searches", "would_close": "Exact reel/frame or confirmatory-license recording identifier and date"}
+  ]
+}
