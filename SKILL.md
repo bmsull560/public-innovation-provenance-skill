@@ -1,9 +1,18 @@
 ---
 name: public-innovation-provenance
-description: Reconstruct the lifecycle of publicly funded research from grant to IP to ownership to license to company to product, or run the chain backwards from a patent, company, or product. Use when auditing grant-to-commercialization provenance, Bayh-Dole ownership, university tech transfer, spinouts, public-return accounting, patent government-interest statements, or joining a funding graph to a knowledge/IP graph.
+description: >-
+  Reconstruct the lifecycle of publicly funded research from grant to IP
+  to ownership to license to company to product, or run the chain
+  backwards from a patent, company, or product. Use when auditing
+  grant-to-commercialization provenance, Bayh-Dole ownership, university
+  tech transfer, spinouts, public-return accounting, patent
+  government-interest statements, FAIN or award traces, or joining a
+  funding graph to a knowledge/IP graph. Not for taxpayer ROI, price
+  targets, trade ideas, complaint drafts, or a verdict that a deal was
+  good or bad.
 metadata:
   type: workflow
-  version: "1.0"
+  version: "1.1"
   domain: public-innovation-provenance
 ---
 
@@ -17,13 +26,13 @@ A story that says public funding became a private product without a source, iden
 
 ## One rule
 
-No hop is a fact unless it carries `source`, `identifier`, `as_of`, and `confidence`. Missing any field makes the hop `unresolved`. Do not invent grant numbers, assignment dates, exclusive licenses, royalty streams, or "the government got nothing."
+No hop is established unless it carries `source`, a real record `identifier`, `as_of`, and `confidence`. When the record is not public, set `confidence` to `unresolved`, set `identifier` to `search:<system>` (for example `search:edgar`), and add a `gaps[]` row whose `hop` is `from|type|to`. Any other missing identifier fails the pack. Do not invent grant numbers, assignment dates, exclusive licenses, royalty streams, or "the government got nothing."
 
 ## Question
 
 Forward — given a grant, what happened to the funded knowledge after the award ended?
 
-Reverse — given a patent, company, or product, did publicly funded research contribute, and through which hops?
+Reverse — given a patent, company, product, or person, did publicly funded research contribute, and through which hops?
 
 ## Seed
 
@@ -37,6 +46,9 @@ Accept exactly one primary seed, plus optional secondary seeds. Classify it befo
 | Institution | UEI, DUNS legacy, EIN, ROR | awards, TTO, spinouts |
 | Company | legal name + jurisdiction, CIK, UEI | licenses in, assignments, products, procurement, capital |
 | Product | trade name + regulatory id | patents, labels, procurement, owner |
+| Person | legal name plus affiliation or ORCID | publications and patents, then those seeds |
+
+Institution and company seeds are stored as node type `organization`. `seed.type` stays `institution` or `company`. A person seed is not walked until that identity is resolved.
 
 If the seed is ambiguous, resolve identity first. Do not start two graphs and merge them later by similar names.
 
@@ -49,7 +61,7 @@ Execute in order. Do not skip gap recording.
 3. Walk **Research → IP**. Prefer independent cross-links (grant number on paper, inventor on patent, government-interest clause naming the award).
 4. Walk **IP → Ownership**. Assignment chain beats website copy. Bayh-Dole defaults live in [references/ownership.md](references/ownership.md).
 5. Walk **IP → Commercialization**. License, option, spinout, product, clearance, procurement, capital, acquisition.
-6. If the user seeded a patent, company, or product, also run [references/reverse-traversal.md](references/reverse-traversal.md).
+6. If the user seeded a patent, company, product, or person, also run [references/reverse-traversal.md](references/reverse-traversal.md).
 7. Fill the public-return ledger in [references/public-return.md](references/public-return.md). Accounting only. No "good deal / bad deal."
 8. Emit the pack from [assets/provenance-report.md](assets/provenance-report.md) plus `artifacts/<slug>/provenance.json` matching [assets/provenance.schema.json](assets/provenance.schema.json).
 9. Run `scripts/check-provenance.py <pack-dir>` before calling the pack done.
@@ -105,7 +117,8 @@ Optional: mermaid of the joined money + knowledge graph. Keep node ids identical
 - Quote government-interest clauses and assignment conveyance text when present
 - Keep inventor, assignee, licensee, and product owner as separate nodes
 - Record negative searches ("PatentsView inventor+assignee query returned 0") so the next agent does not pretend the hop was not tried
-- Mark paywalled or credentialed systems (`iEdison`, most TTO license ledgers, Crunchbase Pro) as `unresolved` rather than guessing
+- Mark paywalled or credentialed systems (`iEdison`, most TTO license ledgers, Crunchbase Pro) as `unresolved` with `identifier: search:<system>` rather than guessing
+- Point every unresolved edge at a `gaps[]` hop of `from|type|to`
 
 ## Do not
 

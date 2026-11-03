@@ -32,6 +32,14 @@ A company that once received an SBIR and later sells a product has two public fa
 3. If no patent list exists, search assignee + product keywords. Hits are `inferred`.
 4. Then run the patent procedure.
 
+
+## Person seed
+
+1. Resolve a legal name plus an affiliation, ORCID, or inventor id. Emails and tickers are not keys.
+2. Collect publications and patents tied to that identity.
+3. Treat each of those as a secondary seed and continue with the publication or patent procedure.
+4. Do not treat a co-author as the same person.
+
 ## Stopping rules
 
 - Stop a branch after two consecutive `inferred` hops. Write the gap.

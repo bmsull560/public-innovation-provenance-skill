@@ -19,10 +19,12 @@ Fill only hops that were searched. Leave missing hops visible.
 flowchart TB
   G[grant] --> R[recipient]
   R --> P[publication]
-  P --> I[inventor]
-  I --> T[patent]
+  P --> N[person]
+  N --> T[patent]
   T --> A[assignment]
-  A --> C[company]
+  A --> O[organization]
+  O --> L[license]
+  L --> C[organization]
   C --> D[product]
 ```
 
